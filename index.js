@@ -41,13 +41,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // passport require config
-require('./config/passport');
+require('./config/passport')(passport);
 
 // using connect flash
 app.use(flash());
 
 // global variables for flash msgs
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');

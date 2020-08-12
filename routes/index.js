@@ -5,15 +5,15 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 router.get('/', forwardAuthenticated, (req, res) => res.render('home'));
 
 // Dashboard
-router.get('/dashboard', ensureAuthenticated, (req, res) =>{
-    if(err){
-        console.log('Error', err);
-    }else{
-        res.render('dashboard', {
-            name: req.user.name
-        });
-    }
-})
+router.get('/dashboard', ensureAuthenticated, (req, res) =>
+    // if(err){
+    //     console.log('Error', err);
+    // }else{}
+    res.render('dashboard', {
+        user: req.user
+        // name: req.user.name
+    })
+);
     
 
 //export this route
